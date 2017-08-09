@@ -1,0 +1,42 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='./form.js'></script>
+</head>
+<body>
+	<form id='my'>
+		<input type="text" name="user" />
+		<select name="select" >
+			<option value="1">1</option>
+			<option value="2">2</option>
+		</select>
+		<input type="radio" name='radio' value='男'>男
+		<input type="radio" name='radio' value='女'>女
+		<input type="checkbox" name="vehicle[]" value="Bike">I have a bike<br>
+<input type="checkbox" name="vehicle[]" value="Car">I have a car 
+		<textarea name="textarea" id="" cols="30" rows="10"></textarea>
+		<button id='btn'>发送</button>
+	</form>
+	<script>
+		var btn=document.querySelectorAll('#btn')[0];
+		btn.addEventListener('click',function(){
+			sendForm({
+				el:'#my',
+				url:'http://localhost/service.php',
+				debug:true,
+				data:{
+					'pwd':125120
+				},
+				success:function(data) {
+					console.log(data);
+				},
+				fail:function(err) {
+					console.log(err)
+				}
+			});
+			return false;
+		},false);
+	</script>
+</body>
+</html>
